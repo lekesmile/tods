@@ -19,7 +19,7 @@ export default class TodosArray extends Component {
                       </ul>
                   })}
                     
-                    <input name="clear" id="" className="btn btn-danger mt-5" type="button" value="Delete All todos"  />
+                    <input onClick={deleteTodosArray} name="clear" id="" className="btn btn-danger mt-5" type="button" value="Delete All todos"  />
                 </div>
             </div>
         )

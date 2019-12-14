@@ -39,6 +39,12 @@ state={
      
   }
 
+  deleteTodosArray =() =>{
+    this.setState({
+      items: []
+    })
+  }
+
   
   render() {
     return (
@@ -49,7 +55,7 @@ state={
        handleSubmit={this.handleSubmit}
        handleInput={this.handleInput}
       />
-      <TodosArray items={this.state.items} />
+      <TodosArray items={this.state.items} deleteTodosArray={this.deleteTodosArray} />
      </div>
     )
   }

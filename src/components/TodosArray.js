@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class TodosArray extends Component {
     render() {
-        const {items} = this.props
+        const {items, deleteTodosArray} = this.props
         console.log(this.props)
         return (
             <div>
@@ -16,7 +16,14 @@ export default class TodosArray extends Component {
                       </ul>
                   })}
                     
-                    <input name="clear" id="" className="btn btn-danger" type="button" value="Delete"  />
+                    <input 
+                    name="clear"
+                     id="" 
+                     className="btn btn-danger" 
+                     type="button" 
+                     value="Delete"
+                     onClick={deleteTodosArray} 
+                      />
                 </div>
             </div>
         )

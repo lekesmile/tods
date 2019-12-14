@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Todos from './components/Todos';
+import TodosArray from './components/TodosArray';
 import './App.css';
+import uuid from 'uuid'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+state={
+  items:[],
+  id: 0,
+  item: ''
 }
+  
+  handleInput =(e)=>{
+    this.setState({
+      item : e.target.value
+    })
+  }
 
-export default App;
+
+  handleSubmit = e => {
+     e.preventDefault();
+
+    const newTodo = {
+        id:uuid(),
+        item: this.state.item
+     }
+    
+     const updatedItem = [...this.state.items, newTodo]
+     this.setState({
+      items: updatedItem ,
+      item: ' '
+     })
+     
+     
+  }
+
+  
+  render() {
+    return (
+      <div className="container mt-5">
+      <h1>Add your todos</h1>
+      <Todos
+       item={this.state.item}
+       handleSubmit={this.handleSubmit}
+       handleInput={this.handleInput}
+      />
+      <TodosArray items={this.state.items} />
+     </div>
+    )
+  }
+}
